@@ -16,7 +16,7 @@ def hsv_detection(img, lower_hsv, upper_hsv, color):
  
 if __name__=='__main__':
     # 이미지 파일 경로 리스트
-    image_paths = ["trafficlight1.png", "trafficlight2.png", "trafficlight3.png"]
+    image_paths = ["trafficlight/image/trafficlight1.png", "trafficlight/image/trafficlight2.png", "trafficlight/image/trafficlight3.png"]
     num = 1 
     # 이미지를 차례대로 출력
     for image_path in image_paths:
@@ -27,8 +27,11 @@ if __name__=='__main__':
         cv2.waitKey(0)
         # 이미지를 블러 처리하여 노이즈 제거
         img_blur = cv2.GaussianBlur(image, (5, 5), 0)
+        # 이미지를 grayscale 이미지로 변환
         gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
-        circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 50, param2 = 100, minRadius = 5, maxRadius = 70)
+        # 허프 변환을 사용하여 원 검출
+        # 이미지, 변환법, 입력 이미지와의 축척, 인접한 원 중심의 최소 거리,  엣지검출 임계값, 원검출 임계값, 검출할 원의 최소 반지름, 최대반지름
+        circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 50, param2 = 100, minRadius = 10, maxRadius = 70)
 
         for i in circles[0]:
             x = int(i[0])
