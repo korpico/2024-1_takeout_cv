@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 from time import sleep
-image = cv2.imread('takeout_cv1/Untitled.jpeg') # 이미지 파일 읽어들이기
+image = cv2.imread('trafficlight/image/Untitled.jpeg') # 이미지 파일 읽어들이기
 # HSV로 색 추출
 hsvLower = np.array([50, 0, 0])    # 추출할 색의 하한(HSV)
 hsvUpper = np.array([255, 255, 255])    # 추출할 색의 상한(HSV)
